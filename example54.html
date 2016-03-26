@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script> 
+<style>
+input.ng-invalid{
+	border:2px solid red;
+}
+
+input.ng-valid{
+	background-color: lightgreen;
+}
+
+</style>
+<body ng-app = "">
+	<p>Writing the field:</p>
+	<form name = "myForm">
+		<input name = "myName" ng-model = "suibian" required>
+	</form>
+</body>
+</html>

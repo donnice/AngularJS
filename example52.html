@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+<body ng-app = "">
+	<p>Print an Email address:</p>
+
+	<form name = "myForm">
+		<input type = "email" name = "myInput" ng-model = "suibian">
+	</form>
+
+	<p>The input's valid state is:</p>
+	<h1>{{myForm.myInput.$valid}}</h1>
+	<h1 ng-show = "myForm.myInput.$error.email"><font color = "red">Not valid!
+	</font></h1>
+</body>
+</html>

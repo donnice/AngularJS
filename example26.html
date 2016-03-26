@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+
+<div ng-app = "myApp" ng-controller="myCtrl">
+
+	<h1>{{carname}}</h1>
+
+</div>
+<script>
+var app = angular.module('myApp',[]);
+app.controller('myCtrl',function($scope){
+	$scope.carname = "Honda";
+});
+</script>
+</html>

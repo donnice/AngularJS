@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+<body>
+	<div ng-app = "myApp" ng-controller = "Ctrl" ng-init = "count = 0">
+
+		<p ng-show = "true">I am visible.</p>
+
+		<p ng-show = "f">I am invisible.</p>
+		<p ng-show = "count<2" >{{count}}</p>
+		<button ng-click = "myFunction()">Click Me!</button>
+		
+	</div>
+
+	<script>
+	var app = angular.module('myApp',[]);
+	app.controller('Ctrl',function($scope){
+		$scope.t = true;
+		$scope.f = false;
+		$scope.myFunction = function(){
+			$scope.t = ($scope.t == true? false:true);
+			$scope.count = $scope.count+1;
+		}
+	});
+	</script>
+</body>
+</html>

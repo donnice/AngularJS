@@ -1,0 +1,20 @@
+<!doctype html>
+<html>
+<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+  <body>
+    <div ng-app = "myApp" ng-controller = "HeroCtrl" ng-style="heroImage">
+      <p>Play</p>
+    </div>
+
+    <script>
+    var app = angular.module('myApp',[]);
+      app.controller('HeroCtrl',function($scope){
+        $scope.heroImage = {
+          background:'url(bg.jpg)'
+        };
+      });
+    </script>
+  </body>
+  </html>
+
+  

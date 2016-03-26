@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<body>
+<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+
+<div ng-app = "" ng-init = "names = [
+{name:'Jani',country:'Norway'},
+{name:'Mi Yang',country:'China'},
+{name:'Shujie',country:'China'}]">
+
+<ul>
+	<li ng-repeat="x in names">
+		{{x.name+" "+x.country}}
+	</li>
+</ul>
+
+</div>
+</body>
+</body>

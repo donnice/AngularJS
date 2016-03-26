@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>  
+<body ng-app="">
+
+	<p>Try leaving the field blank:</p>
+
+	<form name = "myForm">
+		<p>Name:
+			<input name = "myName" ng-model = "suibian" required>
+			<span ng-show = "myForm.myName.$touched &&
+			myForm.myName.$invalid">The name is required.</span>
+		</p>
+	</form>
+</body>
+</html>

@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+<body ng-app = "">
+	<form>
+		Select a topic:
+		<select ng-model = "myVar">
+			<option value = ""></option>
+			<option value = "dogs">Dogs</option>
+			<option value = "tuts">Tutorials</option>
+			<option value = "cars">Cars</option>
+		</select>
+	</form>
+
+	<div ng-switch = "myVar">
+		<div ng-switch-when = "dogs">
+			<h1>Dogs</h1>
+		</div>
+		<div ng-switch-when = "tuts">
+			<h1>Tutorials</h1>
+		</div>
+		<div ng-switch-when = "cars">
+			<h1>Honda!!!!</h1>
+		</div>
+	</div>
+</body>
+</html>

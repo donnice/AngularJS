@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script> 
+<style>
+form.ng-pristine{
+	background-color: lightblue;
+}
+
+form.ng-dirty{
+	background-color: pink;
+}
+</style>
+<body ng-app = "">
+	<form name = "myForm">
+		<p>Write in the input field:</p>
+		<input name = "myName" ng-model = "suibian" required>
+		<p> The form gets a "ng-dirty" class when the form get modified.</p>
+	</form>
+</body>
+</html>
