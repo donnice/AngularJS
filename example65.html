@@ -1,1 +1,25 @@
-<html
+<html ng-app = "notesApp">
+<head>
+	<title>Notes App</title>
+	<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+</head>
+<body ng-controller = "MainCtrl as ctrl">
+	<input type = "text" ng-model = "username">
+	<input type = "password" ng-model = "password">
+	<button ng-click = "change()">Change Values</button>
+	<button ng-click = "submit()">Submit</button>
+
+	<script type = "text/javascript">
+		var app = angular.module('notesApp',[]);
+		app.controller('MainCtrl',function($scope){
+			$scope.change = function(){
+				$scope.username = 'changed';
+				$scope.password = 'password';
+			};
+			$scope.submit = function(){
+				console.log('User clicked submit with ',$scope.username,$scope.password);
+			};
+		});
+	</script>
+</body>
+</html>
