@@ -17,4 +17,29 @@
 		<span ng-show = "myForm.uname.$error.minlength">
 			The minimum length required is 4
 		</span>
-		
+
+		<span ng-show = "myForm.uname.$invalid">
+			This field is invalid
+		</span>
+
+		<input type = "password"
+			   name = "pwd"
+			   ng-model = "user.password"
+			   required>
+		<span ng-show = "myForm.pwd.$error.required">
+			This is a required field
+		</span>
+		<input type = "submit"
+			   value = "Submit"
+			   ng-disabled = "myForm.$invalid">
+	</form>
+
+	<script>
+	angular.module('notesApp',[]).controller('MainCtrl',function($scope){
+		$scope.submit = function(){
+			console.log('User clicked submit with ',$scope.user);
+		}
+	});
+	</script>
+</body>
+</html>
