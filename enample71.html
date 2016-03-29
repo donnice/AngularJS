@@ -1,0 +1,18 @@
+<html ng-app = "notesApp">
+<body ng-controller = "MainCtrl as mainCtrl">
+	<h1>Hello Services!</h1>
+	<button ng-click = "logStuff()">Log something</button>
+
+	<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+	<script>
+	angular.module('notesApp',[])
+	.controller('MainCtrl',function($log,$scope){
+		//$scope.$log = $log;
+		$scope.logStuff = function(){
+			$log.log('The button was pressed');
+			$log.debug('I am debug!');
+		};
+	});
+	</script>
+</body>
+</html>
