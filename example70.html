@@ -1,2 +1,13 @@
 <html ng-app = "notesApp">
+<head>
+	<title>Notes App</title>
+	<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+	<script type="text/javascript" src = "app1.js"></script>
+</head>
 
+<body ng-controller = "MainCtrl as mainCtrl">
+	<h1>Hello Controllers!</h1>
+	<button ng-click = "open('first')">Open First</button>
+	<button ng-click = "open('second')">Open Second</button>
+	<div ng-switch on = "tab">
+		<div ng-switch-when = "first">
