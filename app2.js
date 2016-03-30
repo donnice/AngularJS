@@ -5,19 +5,19 @@ angular.module('notesApp',[])
 		$scope.tab = tab
 	};
 })
-.controller('SubCtrl',function($scope,$ItemService){
+.controller('SubCtrl',function($scope,ItemService){
 	$scope.list = function(){
-		return $ItemService.list();
+		return ItemService.list();
 	};
 
 	$scope.add = function(){
-		$ItemService.add({
+		ItemService.add({
 			id:$scope.list().length+1,
 			label:'Item'+$scope.list().length
 		});
 	} ;
 });
-.factory('ItemService',[function(){
+.factory('ItemService',function(){
 	var items = [
 		{id:1,label:'Item 0'},
 		{id:2,label:'Item 1'}
@@ -30,4 +30,4 @@ angular.module('notesApp',[])
 			items.push(item);
 		}
 	};
-}]);
+});
