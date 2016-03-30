@@ -12,7 +12,7 @@
 			<div ng-controller = "SubCtrl">
 				<h3>First Tab</h3>
 				<ul>
-					<li ng-repeat = "item in list"><!--Probably a problem-->
+					<li ng-repeat = "item in list()"><!--Probably a problem-->
 						<span ng-bind = "item.label"></span>
 					</li>
 				</ul>
@@ -27,7 +27,7 @@
 			<div ng-controller = "SubCtrl">
 				<h3>Second tab</h3>
 				<ul>
-					<li ng-repeat = "item in list">
+					<li ng-repeat = "item in list()">
 						<span ng-bind = "item.label"></span>
 					</li>
 				</ul>
