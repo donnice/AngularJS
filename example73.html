@@ -1,0 +1,29 @@
+<html ng-app = "notesApp">
+<head>
+	<title>Http Post Example</title>
+	<style>
+	.item{
+		padding: 10px;
+	}
+	</style>
+</head>
+
+<body ng-controller = "MainCtrl as mainCtrl">
+	<h1>Hello Servers!</h1>
+	<div ng-repeat = "todo in items" class = "item">
+		<div><span ng-bind = "todo.label"></span></div>
+	</div>
+
+	<div>
+		<form name ="addForm"
+			ng-submit = "add()">
+			<input type = "text" 
+				   placeholder = "Label"
+				   ng-model = "newTodo.label"
+				   required>
+			<input type = "text"
+				   placeholder = "Author"
+				   ng-model = "newTodo.author"
+				   required>
+			
+
