@@ -5,4 +5,28 @@
 <body ng-app = "filtersApp">
 	<ul ng-controller = "FilterCtrl">
 		<li>Amount - {{amount}}</li>
-		<li>
+		<li>Amount - Default Currency:{{amount | currency}}</li>
+		<li>Amount - Number:{{amount | number}}</li>
+		<li>Amount - No. with 4 decimals: {{amount | number:4}}</li>
+		<li>Name - lowercase:{{name | lowercase}}</li>
+		<li>Name - uppercase:{{name | uppercase}}</li>
+		<li>Name with no filters:{{name}}</li>
+		<li>The JSON Filter : {{obj | json}}</li>
+		<li>Timestamp:{{startTime}}</li>
+		<li>Default Date Filter:{{startTime | date}}</li>
+		<li>Medium Date filter:{{startTime | date:'medium'}}</li>
+		<li>Customer Date filter:{{startTime | date:'M/dd,yyyy'}}</li>
+	</ul>
+
+	<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+	<script>
+	angular.module('filtersApp',[])
+	.controller('FilterCtrl',function($scope){
+		$scope.amount = 1024;
+		$scope.totalCost = 4906;
+		$scope.name = 'Shujie'
+		$scope.startTime = new Date().getTime();
+	});
+	</script>
+</body>
+</html>
