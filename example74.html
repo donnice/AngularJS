@@ -1,0 +1,28 @@
+<html>
+<head>
+	<title>Filters in Action</title>
+</head>
+
+<body ng-app = "filtersApp">
+	<div ng-controller = "FilterCtrl">
+		<div>
+			Amount as a number:{{amount | number}}
+		</div>
+
+		<div>
+			Total Cost as a currency:{{totalCost | currency}}
+		</div>
+
+		<div>
+			Total Cost in INR:{{totalCost | currency:'INR'}}
+		</div>
+
+		<div>
+			Shouting the game:{{name | uppercase}}
+		</div>
+
+		<div>
+			Start Time:{{startTime | date:'medium'}}
+		</div>
+	</div>
+	

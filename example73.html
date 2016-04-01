@@ -6,6 +6,7 @@
 		padding: 10px;
 	}
 	</style>
+	<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
 </head>
 
 <body ng-controller = "MainCtrl as mainCtrl">
@@ -25,5 +26,37 @@
 				   placeholder = "Author"
 				   ng-model = "newTodo.author"
 				   required>
-			
+			<input type = "submit"
+				   value = "Add"
+				   ng-disabled = "addForm.$invalid">
+		</form>
+	</div>
+
+	<script>
+	angular.module('notesApp',[])
+	.controller('MainCtrl',function($scope,$http){
+		$scope.items = [];
+		$scope.newTodo = {};
+		var fetchTodos = function(){
+			return $http.get('welcome.htm').then(
+				function(response){
+					$scope.items = response.data;
+				},function(errResponse){
+					console.error('Error while fetching notes!');
+				});
+		};
+		fetchTodos();
+
+		$scope.add = function(){
+			$http.post('welcome.htm',$scope.newTodo)
+			.then(fetchTodos)
+			.then(function(response){
+				$scope.newTodo = {};
+			});
+		};
+
+	});
+	</script>
+</body>
+</html>
 
