@@ -25,4 +25,15 @@
 			Start Time:{{startTime | date:'medium'}}
 		</div>
 	</div>
-	
+	<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+	<script>
+	angular.module('filtersApp',[])
+	.controller('FilterCtrl',function($scope){
+		$scope.amount = 1024;
+		$scope.totalCost = 4906;
+		$scope.nme = 'Shujie'
+		$scope.startTime = new Date().getTime();
+	});
+	</script>
+</body>
+</html>
