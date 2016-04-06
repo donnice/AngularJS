@@ -13,7 +13,7 @@
 		</div>
 
 		<div>
-			Start Time (Our filter):{{startTime | timeAgo}}
+			Start Time (Our filter):{{startTime | timeAgo:true}}
 		</div>
 
 		<div>
@@ -21,7 +21,7 @@
 		</div>
 
 		<div>
-			someTimeAgo (Our filter): {{someTimeAgo | timeAgo}}
+			someTimeAgo (Our filter): {{someTimeAgo | timeAgo:true}}
 		</div>
 	</div>
 
@@ -39,6 +39,25 @@
 		var ONE_MONTH = ONE_DAY*30;
 
 		return function(ts,optShowSecondsMessage){
-			
+			if(optShowSecondsMessage!==false){
+				optShowSecondsMessage = true;
+			}
+		
+			var currentTime = new Date().getTime();
+			var diff = currentTime - ts;
+			if(diff < ONE_MINUTE && optShowSecondsMessage){
+				return 'seconds ago';
+			} else if (diff < ONE_HOUR){
+				return 'minutes ago';
+			} else if (diff < ONE_DAY){
+				return 'hours ago';
+			} else if (diff < ONE_MONTH){
+				return 'days ago';
+			} else {
+				return 'months ago';
+			}
 		}
-	})
+	});
+	</script>
+</body>
+</html>
