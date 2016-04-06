@@ -1,0 +1,44 @@
+<html>
+<head>
+	<title>Custom Filters in Action</title>
+</head>
+<body ng-app = "filtersApp">
+	<div ng-controller = "FilterCtrl">
+		<div>
+			Start Time (Timestamp):{{startTime}}
+		</div>
+
+		<div>
+			Start Time (DateTime):{{startTime | date:'medium'}}
+		</div>
+
+		<div>
+			Start Time (Our filter):{{startTime | timeAgo}}
+		</div>
+
+		<div>
+			someTimeAgo: {{someTimeAgo | date:'short'}}
+		</div>
+
+		<div>
+			someTimeAgo (Our filter): {{someTimeAgo | timeAgo}}
+		</div>
+	</div>
+
+	<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+
+	<script type = "text/javascript">
+	angular.module('filtersApp',[])
+	.controller('FilterCtrl',function($scope){
+		$scope.startTime = new Date().getTime();
+		$scope.someTimeAgo = new Date().getTime() - (1000*60*60*4);
+	}).filter('timeAgo',function(){
+		var ONE_MINUTE = 1000*60;
+		var ONE_HOUR = ONE_MINUTE*60;
+		var ONE_DAY = ONE_HOUR*24;
+		var ONE_MONTH = ONE_DAY*30;
+
+		return function(ts,optShowSecondsMessage){
+			
+		}
+	})
