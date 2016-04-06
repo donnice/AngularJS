@@ -1,0 +1,91 @@
+<html>
+<head>
+	<title>Custom Filters in Action</title>
+	<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/jasmine/2.3.3/jasmine.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jasmine/2.3.3/jasmine.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jasmine/2.3.3/jasmine-html.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jasmine/2.3.3/boot.min.js"></script>
+    
+    <!-- Angular and Angular Mock references -->
+    <script type="text/javascript" src="https://code.angularjs.org/1.4.0-rc.2/angular.min.js"></script>
+    <script type="text/javascript" src="https://code.angularjs.org/1.4.0-rc.2/angular-mocks.js"></script>
+</head>
+<body ng-app = "filtersApp">
+	<div ng-controller = "FilterCtrl">
+		<div>
+			Start Time (Timestamp):{{startTime}}
+		</div>
+
+		<div>
+			Start Time (DateTime):{{startTime | date:'medium'}}
+		</div>
+
+		<div>
+			Start Time (Our filter):{{startTime | timeAgo:true}}
+		</div>
+
+		<div>
+			someTimeAgo: {{someTimeAgo | date:'short'}}
+		</div>
+
+		<div>
+			someTimeAgo (Our filter): {{someTimeAgo | timeAgo:true}}
+		</div>
+	</div>
+
+	<script>
+	angular.module('filtersApp',[])
+	.controller('FilterCtrl',function($scope){
+		$scope.startTime = new Date().getTime();
+		$scope.someTimeAgo = new Date().getTime() - (1000*60*60*4);
+	}).filter('timeAgo',function(){
+		var ONE_MINUTE = 1000*60;
+		var ONE_HOUR = ONE_MINUTE*60;
+		var ONE_DAY = ONE_HOUR*24;
+		var ONE_MONTH = ONE_DAY*30;
+
+		return function(ts,optShowSecondsMessage){
+			if(optShowSecondsMessage!==false){
+				optShowSecondsMessage = true;
+			}
+		
+			var currentTime = new Date().getTime();
+			var diff = currentTime - ts;
+			if(diff < ONE_MINUTE && optShowSecondsMessage){
+				return 'seconds ago';
+			} else if (diff < ONE_HOUR){
+				return 'minutes ago';
+			} else if (diff < ONE_DAY){
+				return 'hours ago';
+			} else if (diff < ONE_MONTH){
+				return 'days ago';
+			} else {
+				return 'months ago';
+			}
+		}
+	});
+
+	describe('timeAgo Filter',function(){
+		beforeEach(module('filtersApp'));
+
+		var filter;
+		beforeEach(inject(function(timeAgoFilter){
+			filter = timeAgoFilter;
+		}));
+
+		it('should respond based on timestamp',function(){
+			var currentTime = new Date().getTime();
+			currentTime -= 10000;
+			expect(filter(currentTime,false)).toEqual('minutes ago');
+			var fewMinutesAgo = currentTime - 1000*60;
+			expect(filter(fewMinutesAgo,false)).toEqual('minutes ago');
+			var fewHoursAgo = currentTime - 1000*60*68;
+			expect(filter(fewHoursAgo,false)).toEqual('hours ago');
+			var fewDaysAgo = currentTime - 1000*60*60*26;
+			expect(filter(fewDaysAgo,false)).toEqual('days ago');
+			
+		});
+	});
+	</script>
+</body>
+</html>
