@@ -8,5 +8,29 @@
 	<div class = "top-bar" ng-controller = "MainCtrl">
 		<div class = "pull-left">
 			<span><a href = "#/">FIFA TEAMS</a></span>
-			
+		</div>
+		<div class = "pull-right">
+			<span ng-hide = "userService.isLoggedIn">
+				<a href = "#/login">Login</a>
+			</span>
+			<span ng-show = "userService.isLoggedIn">
+				<a href = "/api/logout">Logout</a>
+			</span>
+		</div>
+	</div>
+
+	<div ng-view></div>
+
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.js"></script>
+	<script src = "https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular-route.js"></script>
+	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
+
+	<script type="text/javascript" src = "scripts/app.js">
+
+	</script>
+	<script type="text/javascript" src = "scripts/services.js"></script>
+	<script type="text/javascript" src = "scripts/controllers.js"></script>
+
+</body>
+</html>
 
