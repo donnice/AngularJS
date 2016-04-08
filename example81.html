@@ -25,7 +25,7 @@
 	<script src = "https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular-route.js"></script>
 	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
 
-	<script type="text/javascript" src = "scripts/app.js">
+	<script type="text/javascript">
 	angular.module('fifaApp',['ngRoute'])
 	.config(function($routeProvider){
 		$routeProvider.when('/',{
@@ -45,16 +45,84 @@
 						function(err){
 							$location.path('/login');
 							$location.replace();
-							
-						})
+							return $q.reject(err);
+						});
 				}]
 			}
-		})
-	})
+		});
+		$routeProvider.otherwise({
+			redirectTo:'/'
+		});
+	});
 
 	</script>
-	<script type="text/javascript" src = "scripts/services.js"></script>
-	<script type="text/javascript" src = "scripts/controllers.js"></script>
+
+	<script type="text/javascript" src = "scripts/services.js">
+	angular.module('fifaApp')
+	.factory('FifaService',function($http){
+		return{
+			getTeams: function(){
+				return $http.get('/api/team/'+code);
+			}
+		}
+	})
+	.factory('UserService',function($http){
+		var service = {
+			isLoggedIn:false,
+
+			session:function(){
+				return $http.get('/api/session')
+				.then(function(response){
+					service.isLoggedIn = true;
+					return response;
+				});
+			},
+
+			login:function(user){
+				return $http.post('/api/login',user)
+				.then(function(response){
+					service.isLoggedIn = true;
+					return response;
+				});
+			}
+		};
+		return service;
+	});
+	</script>
+
+	<script type="text/javascript">
+	angular.module('fifaApp')
+	.controller('MainCtrl',function($scope,UserService){
+		$scope.userService = UserService;
+		UserService.session();
+	})
+	.controller('TeamListCtrl',function($scope,FifaService){
+		$scope.teams = [];
+
+		FifaService.getTeams().then(function(resp){
+			$scope.teams = resp.data;
+		});
+	})
+	.controller('LoginCtrl',function($scope,$location,UserService){
+		$scope.user = {username:'',password:''};
+		$scope.login = function(){
+			UserService.login($scope.user).then(function(success){
+				$location.path('/');
+			},function(error){
+				$scope.errorMessage = error.data.msg;
+			});
+		};
+	})
+	.controller('TeamDetailsCtrl',function($scope,$location,$routeParams,FifaService){
+		$scope.team = {};
+		FifaService.getTeamDetails($routeParams.code)
+			.then(function(resp){
+				$scope.team = resp.data;
+			},function(error){
+				$location.path('/login');
+			});
+	})
+	</script>
 
 </body>
 </html>
