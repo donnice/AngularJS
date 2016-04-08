@@ -1,0 +1,24 @@
+<html>
+<head>
+	<title>Stock Market App</title>
+</head>
+<body ng-app = "stockMarketApp">
+	<div ng-controller = "MainCtrl">
+		<h3>List of Stockes</h3>
+		<div ng-repeat = "stock in stocks">
+			<div ng-include="stockTemplate"></div>
+		</div>
+	</div>
+
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.js"></script>
+	<script type="text/javascript">
+	angular.module('stockMarketApp',[])
+	.controller('MainCtrl',function($scope){
+		$scope.stocks = [
+			{name:'First Stock',price:100,previous:220},
+			{name:'Second Stock',price:140,previous:120},
+			{name:'Third Stock',price:110,previous:110},
+			{name:'Fourth Stock',price:400,previous:420},
+		]
+	})
+	</script>
