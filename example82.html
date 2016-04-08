@@ -6,7 +6,20 @@
 	<div ng-controller = "MainCtrl">
 		<h3>List of Stockes</h3>
 		<div ng-repeat = "stock in stocks">
-			<div ng-include="stockTemplate"></div>
+			<div class="stock-dash">
+			  Name:
+			  <span class="stock-name"
+			        ng-bind="stock.name">
+			  </span>
+			  Price:
+			  <span class="stock-price"
+			        ng-bind="stock.price | currency">
+			  </span>
+			  Percentage Change:
+			  <span class="stock-change"
+			        ng-bind="getChange(stock) + '%'">
+			  </span>
+			</div>
 		</div>
 	</div>
 
@@ -18,7 +31,13 @@
 			{name:'First Stock',price:100,previous:220},
 			{name:'Second Stock',price:140,previous:120},
 			{name:'Third Stock',price:110,previous:110},
-			{name:'Fourth Stock',price:400,previous:420},
-		]
-	})
+			{name:'Fourth Stock',price:400,previous:420}
+		];
+
+		$scope.stockTemplate = 'stock.html';
+
+		$scope.getChange = function(stock){
+			return (stock.price-stock.previous)*1.0/stock.previous;
+		};
+	});
 	</script>
