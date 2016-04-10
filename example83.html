@@ -9,3 +9,45 @@
 			Tab 1
 		</button>
 		
+		<button ng-click = "currentTab = 'tab2'">
+			Tab 2
+		</button>
+
+		<button ng-click = "currentTab = 'tab3'">
+			Tab 3
+		</button>
+
+		<button ng-click = "currentTab = 'something'">
+			Trigger Default
+		</button>
+
+		<div ng-switch = "currentTab">
+			<div ng-switch-when = "tab1">
+				Tab 1 is selected
+			</div>
+
+			<div ng-switch-when = "tab2">
+				Tab 2 is selected
+			</div>
+
+			<div ng-switch-when = "tab3">
+				Tab 3 is selected
+			</div>
+
+			<div ng-switch-default>
+				No item is selected
+			</div>
+		</div>
+	</div>
+
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.js"></script>
+	<script>
+		angular.module('switchApp',[])
+		.controller('MainCtrl',function($scope){
+			$scope.currentTab = 'tab1';
+		});
+	</script>
+</body>
+</html>
+
+
