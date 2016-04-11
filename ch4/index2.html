@@ -1,0 +1,23 @@
+<html ng-app = "timeExampleModule">
+<head>
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.js"></script>
+</head>
+
+<body>
+	<div ng-controller = "ClockCtrl">
+		Current time is: {{time.now}}
+	</div>
+
+	<script>
+	angular.module('timeExampleModule',[])
+	.factory('time',function($timeout){
+		var time = {};
+		(function tick(){
+			time.now = new Date().toString();
+			
+		})
+	})
+	</script>
+
+</body>
+</html>
