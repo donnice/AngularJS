@@ -3,3 +3,10 @@ angular.module('shitApp',[])
 	$scope.name = 'angular';
 });
 
+describe('hoho',function(){
+	beforeEach(module('shitApp'));
+	var $scope = {};
+	it('should show off bindings', function() {
+	  expect($scope.name.text()).toBe('angular');
+	});
+});

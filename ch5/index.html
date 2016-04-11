@@ -1,13 +1,15 @@
 <html ng-app = "shitApp">
 <head>
 	<!-- Jasmine References -->
-    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/jasmine/2.3.3/jasmine.min.css">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jasmine/2.3.3/jasmine.min.js"></script>
+	<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/jasmine/2.3.3/jasmine.min.css">
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jasmine/2.3.3/jasmine.min.js"></script>
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jasmine/2.3.3/jasmine-html.min.js"></script>
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jasmine/2.3.3/boot.min.js"></script>
 
 	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.js"></script>
+	<script type="text/javascript" src="https://code.angularjs.org/1.4.0-rc.2/angular-mocks.js"></script>
 	<script src = "script.js"></script>
+
 </head>
 
 <body>
@@ -20,12 +22,7 @@
 		&Itspan x-ng-bind = "name" &gt <span x-ng-bind = "name"></span><br/>
 	</div>
 	<script>
-	describe('element',function(){
-		beforeEach(module('shitApp'));
-		it('should show off bindings', function() {
-		   expect(element('div[ng-controller="Ctrl1"] span[ng-bind]').text()).toBe('angular');
-		});
-	});
+	
 	</script>
 </body>
 </html>
