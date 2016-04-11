@@ -10,13 +10,18 @@
 
 	<script>
 	angular.module('timeExampleModule',[])
-	.factory('time',function($timeout){
+	.factory('timeshit',function($timeout){
 		var time = {};
 		(function tick(){
 			time.now = new Date().toString();
-			
-		})
+			$timeout(tick,1000);
+		})();
+		return time;
 	})
+	.controller('ClockCtrl',function($scope,timeshit){
+		$scope.time = timeshit;
+	});
+
 	</script>
 
 </body>
