@@ -5,8 +5,8 @@ angular.module('shitApp',[])
 
 describe('hoho',function(){
 	beforeEach(module('shitApp'));
-	var $scope = {};
 	it('should show off bindings', function() {
-	  expect($scope.name.text()).toBe('angular');
+      var element = angular.element('div[ng-controller="Ctrl1"] span[ng-bind]');
+	  expect(element.text()).toBe('angulashitr');
 	});
 });
