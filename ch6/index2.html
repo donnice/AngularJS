@@ -1,13 +1,14 @@
 <!DOCTYPE html>
-<html ng-app = "time">
+<html ng-app = "myApp">
 <head>
 	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.js"></script>
 	<script src = "script2.js"></script>
 </head>
+
 <body>
-	<div ng-controller = "Ctrl2">
-		Date format:<input ng-model = "format"></hr>
-		Current time is: <span my-current-time = "format"></span>
+	<div class = "example2" ng-controller = "Ctrl1">
+		Name:<input ng-model = "name" type = "text"/>
+		<button ng-click = "greet()">Greet</button>
 	</div>
 </body>
 </html>
