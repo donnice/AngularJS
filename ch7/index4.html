@@ -21,3 +21,12 @@
 			<div>
 				Length(float):
 				<input type = "text" ng-model = "length" name = "length" smart-float/>
+				{{length}}<br />
+				<span ng-show = "form.length.$error.float">
+					This is not a valid float number!
+				</span>
+			</div>
+		</form>
+	</div>
+</body>
+</html>

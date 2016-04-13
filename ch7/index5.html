@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html ng-app = "myApp">
+<head>
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.js"></script>
+  <script src = "script5.js"></script>
+</head>
+
+<body ng-controller = "myCtrl">
+	<div contentEditable = "true" ng-model = "content" title = "Click to edit">Some</div>
+	<pre>model = {{content}}</pre>
+
+	<style type = "text/css">
+		div[contentEditable]{
+			cursor: pointer;
+			background-color: #D0D0D0;
+		}
+	</style>
+</body>
+</html>
