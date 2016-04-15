@@ -54,8 +54,26 @@ function initEnv(name){
 						delay = setTimeout(fireUrlChange,250);
 					}
 				});
-			}
-		})
 
-	}])
+				browser.url = function(url){
+					return input.val(url);
+				};
+
+				elm.append('Address: ').append(input);
+
+				function fireUrlChange(){
+					delay = null;
+					browser.urlChange(input.val());
+				}
+			};
+		});
+
+	}]);
+
+	root.bind('click',function(e){
+		e.stopPropagation();
+	});
 }
+
+initEnv('html5');
+initEnv('hashbang');
