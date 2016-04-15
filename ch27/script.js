@@ -39,5 +39,23 @@ function initEnv(name){
 		$locationProvider,$provide){
 		$locationProvider.html5Mode(true).hashPrefix('!');
 		
+		$provide.value('$browser',browsers[name]);
+		$provide.value('$document',root);
+		$provide.value('$sniffer',{history:name == 'html5'});
+
+		$compileProvider.directive('ngAddressBar',function(){
+			return function(scope,elm,attrs){
+				var browser = browsers[attrs.browser],
+					input = angular.element('<input type = "text">').val(browser.url()),
+					delay;
+
+				input.bind('keypress keyup keydown',function(){
+					if(!delay){
+						delay = setTimeout(fireUrlChange,250);
+					}
+				});
+			}
+		})
+
 	}])
 }
