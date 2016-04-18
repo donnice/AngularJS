@@ -1,0 +1,20 @@
+<html ng-app = "myApp">
+<head>
+	<title>Testing</title>
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.js"></script>
+  	<script src = "script.js"></script>
+</head>
+
+<body ng-controller = "MyController">
+	<div id = "emailEditor">
+		To:<input ng-model = "to"
+			type = "email"
+			placeholder = "Recipient"/><br>
+		Email body:<textarea ng-model = "emailBody"></textarea>
+	</div>
+
+	<div id = "emailPreview">
+		<pre>__previewText__</pre>
+	</div>
+</body>
+</html>

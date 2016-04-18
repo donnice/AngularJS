@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html ng-app = "myApp">
+<head>
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.js"></script>
+	<script src = "script2.js"></script>
+	<style>
+	#parentCtrl{
+		background-color: yellow;
+		padding: 10px;
+	}
+	#childCtrl{
+		background-color: green;
+		padding: 10px;
+	}
+	</style>
+</head>
+
+<body>
+	<p>We can access:{{rootProperty}}</p>
+	<div id = "parentCtrl" ng-controller = "ParentCtrl">
+		<p>We can access:{{rootProperty}} and {{parentProperty}}</p>
+		<div id = "childCtrl" ng-controller = "ChildCtrl">
+			<p>
+				We can access:
+				{{rootProperty}} and
+				{{parentProperty}} and
+				{{childProperty}}
+			</p>
+			<p>{{fullSentenceFromChild}}</p>
+		</div>
+	</div>
+</body>
+</html>
