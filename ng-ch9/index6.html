@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html ng-app = "myApp">
+<head>
+	<link rel="stylesheet" href="//cdn.jsdelivr.net/foundation/4.3.2/css/foundation.min.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.js"></script>
+	<script src = "script6.js"></script>
+</head>
+
+<body>
+	<div ng-controller = "SomeCtrl">
+		{{someModel.someValue}}<br>
+		{{someBareValue}}
+		<button ng-click = "someAction()">Communicate to child</button>
+		<div ng-controller = "ChildCtrl">
+			{{someModel.someValue}}<br>
+			{{someBareValue}}
+			<button ng-click = "childAction()">Communicate to parent</button>
+		</div>
+	</div>
+</body>
+</html>

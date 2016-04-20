@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html ng-app = "myApp">
+<head>
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.js"></script>
+	<script src = "script8.js"></script>
+	<style>
+	.odd{
+		background-color: gray;
+	}
+	.even{
+		background-color: white;
+	}
+	</style>
+</head>
+
+<body>
+	<ul ng-controller = "SubjectsCtrl">
+		<li ng-repeat = "subject in subjects" 
+			ng-class = "{even:!$even,odd:!$odd}">
+			{{subject.name}} from {{subject.university}}
+		</li>
+	</ul>
+</body>
+</html>
