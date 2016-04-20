@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html ng-app = "myApp">
+<head>
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.js"></script>
+	<script src = "script.js"></script>
+</head>
+
+<body>
+	<div ng-app = "myApp" ng-init = "someProperty = 'some data'">
+	</div>
+
+	<div ng-init = "siblingProperty = 'more data'">
+		Inside Div Two:{{aThirdProperty}}
+		<div ng-init = "aThirdProperty = 'data for 3rd property'"
+			 ng-controller = "SomeCtrl">
+			 Inside Div Three:{{aThirdProperty}}
+			 <div ng-init = "SecondCtrl">
+			 	Inside Div Four:{{aThirdProperty}}
+			 	<br>
+			 	Outside myDirective:{{myProperty}}
+			 	<div my-directive ng-init = "myProperty = 'wow,that is cool'">
+			 		Inside myDirective:{{myProperty}}
+			 	</div>
+			 </div>
+		</div>
+	</div>
+</body>
+</html>
