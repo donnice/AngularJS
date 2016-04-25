@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang = "en" ng-app = "myApp">
+<head>
+	<title>Node app</title>
+	<link rel = "stylesheet" href = "stylesheets/style.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.js"></script>
+</head>
+
+<body>
+	<div ng-controller = "HomeController">
+		<h3>Button hits:{{hits}}</h3>
+		<button ng-click = "registerHit()">
+			Hit me! If you dare!
+		</button>
+	</div>
+
+	<script type="text/javascript" src = "javascripts/services.js"></script>
+	<script type="text/javascript" src = "javascripts/app.js"></script>
+</body>
+</html>
