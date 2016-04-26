@@ -15,15 +15,10 @@
 	<script src = "scripts/services.js"></script>
 	<script src = "scripts/directives.js"></script>
 	<script type="text/javascript" src="https://js.stripe.com/v2/"></script>
-	<script type="text/javascript">
-		(function(){
-			var po = document.createElement('script');
-			po.type = 'text/javascript';
-			po.async = true;
-			po.src = 'https://apis.google.com/\js/client:plusone.js?onload=onLoadCallback';
-			var s = document.getElementsByTagName('script')[0];
-			s.parentNode.insertBefore(po,s);
-		})();
-	</script>
+	<h2>Signin to ngroad</h2>
+	<div google-signin
+		client-id = '175759036338-j8jgb1882e3sr6gua1diror0ot4mgkos.apps.googleusercontent.com'
+		after-signin = "signedIn(oauth)"></div>
+		<pre>{{user | json}}</pre>
 </body>
 </html>
