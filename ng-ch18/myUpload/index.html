@@ -86,4 +86,17 @@
 			<span style = "font-size: 15px">Example 3.1: The example displays all statuses, without inspection.</span><br>
 			<br>
 			
+			<form ng-uploaded = "uploadFile1(content)" action = "upload?delay=yes">
+				<p>
+					<label>Select a file to upload:</label><input type = "file" name = "file">
+				</p>
+				<p>
+					<input type = "submit" class = "btn" value = "Submit" ng-disabled
+					 = "$isUploading">
+				</p>
+			</form>
+
+			<div class = "alert alert-info">
+				Server Response:{{uploadResponse1}}
+			</div><br>
 							
