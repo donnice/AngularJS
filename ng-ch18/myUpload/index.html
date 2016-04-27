@@ -18,3 +18,52 @@
 		display: block;
 	}
 	</style>
+</head>
+
+<body>
+	<div class = "container" ng-app="ngUploadApp">
+		<div ng-controller = "Example1Ctrl">
+			<h1>
+				Example 1 - Running with default configuration (requirement: v0.1.1 and above)
+			</h1>
+			<span>Current value of foo is:<b>{{foo}}</b>. <i>(Works with the active $scope.)</i></span>
+			<br><br>
+			<form id = "foo" ng-upload = "bar(content)" method = "post" action = "/upload?delay=yes" name = "foo">
+				<p>
+					<input type = "submit" class = "btn" value = "Submit" ng-disabled = "$isUploading"><br>
+					<i>Button is not <b>disabled</b> during upload.</i>
+				</p>
+			</form>
+
+			<div class = "alert alert-info">
+				Server Response:
+				<div>
+					{{uploadResponse}}
+				</div>
+			</div>
+		</div>
+
+		<div ng-controller = "Example2Ctrl">
+			<h1>
+				Example 2 - Submitting forms with any html element
+			</h1>
+			<span>This example shows how to use any html element to submit your form.</span><br>
+			<form ng-upload = "uploadFile(content)" action  = "/upload?delay=yes">
+				<p>
+					<label>Select a file to upload:</label><input type = "file" name = "file">
+				</p>
+				<div style = "width:550px">
+					<div class = "row-fluid">
+						<div class = "span4">
+							<div style = "text-align: center; cursor: pointer; padding: 10px;
+							background-color:black;color:white" upload-submit = "">
+								With a div.
+							</div>
+						</div>
+
+						<div class = "span4">
+							<a ng-href = "javascript:void(0)" style = "padding: 10px; display:block;" upload-submit = "">With a Link.</a>
+						</div>
+
+						<div class = "span4">
+							
